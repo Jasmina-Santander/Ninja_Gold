@@ -27,73 +27,57 @@
             </div>
         </div>
         <div class="row mt-4 mb-4">
-            <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <form action="/process_money" method="POST">
-                    {% csrf_token %}
-                    <div class="card text-center border-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Farm</h3>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">(earns 10-20 golds)</h4>
-                        </div>
-                        <div class="card-footer">
-                            <input type="hidden" name="farming" value="farm">
-                            <input type="submit" class="btn btn-primary" value="Find gold!!">
-                        </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 mb-4">                
+                <div class="card text-center border-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Farm</h3>
                     </div>
-                </form>
+                    <div class="card-body">
+                        <h4 class="card-title">(earns 10-20 golds)</h4>
+                    </div>
+                    <div class="card-footer">     
+                        <a class="btn btn-primary" href="process_money/farm">Find gold!!</a>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <form action="/process_money" method="POST">
-                    {% csrf_token %}
-                    <div class="card text-center border-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Cave</h3>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">(earns 5-10 golds)</h4>
-                        </div>
-                        <div class="card-footer">
-                            <input type="hidden" name="farming" value="cave">
-                            <input type="submit" class="btn btn-success" value="Find gold!!">
-                        </div>
+                <div class="card text-center border-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Cave</h3>
                     </div>
-                </form>
+                    <div class="card-body">
+                        <h4 class="card-title">(earns 5-10 golds)</h4>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-success" href="process_money/cave">Find gold!!</a>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <form action="/process_money" method="POST">
-                    {% csrf_token %}
-                    <div class="card text-center border-warning">
-                        <div class="card-header">
-                            <h3 class="card-title">House</h3>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">(earns 2-5 golds)</h4>
-                        </div>
-                        <div class="card-footer">
-                            <input type="hidden" name="farming" value="house">
-                            <input type="submit" class="btn btn-warning" value="Find gold!!">
-                        </div>
+                <div class="card text-center border-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">House</h3>
                     </div>
-                </form>
+                    <div class="card-body">
+                        <h4 class="card-title">(earns 2-5 golds)</h4>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-warning" href="process_money/house">Find gold!!</a>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <form action="/process_money" method="POST">
-                    {% csrf_token %}
-                    <div class="card text-center border-danger">
-                        <div class="card-header">
-                            <h3 class="card-title">Casino</h3>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">(earns/takes 0-50 golds)</h4>
-                        </div>
-                        <div class="card-footer">
-                            <input type="hidden" name="farming" value="casino">
-                            <input type="submit" class="btn btn-danger" value="Find gold!!">
-                        </div>
+                <div class="card text-center border-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Casino</h3>
                     </div>
-                </form>
+                    <div class="card-body">
+                        <h4 class="card-title">(earns/takes 0-50 golds)</h4>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-danger" href="process_money/casino">Find gold!!</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mt-4 mb-4">
@@ -109,7 +93,6 @@
             </div>
         </div>
     </div>
-          
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.js"></script>

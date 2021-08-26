@@ -9,42 +9,37 @@ def index(request):
         request.session['activities'] = []
     return render(request, 'core/index.html')
 
-def process_money(request):
-    if request.method == 'GET':
-        return redirect('/')
-    elif request.method == 'POST':
-        print(request.POST['farming'])
-        
-        if request.POST['farming'] == 'farm':
-            gold = random.randint(10, 20)
-            request.session['activities'].append('Earned ' + str(gold) +  ' golds from the farm! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
 
-        if request.POST['farming'] == 'cave':
-            gold = random.randint(5, 10)
-            request.session['activities'].append('Earned ' + str(gold) +  ' golds from the cave! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
+def process_money(request, place):        
+    if place == 'farm':
+        gold = random.randint(10, 20)
+        request.session['activities'].append('Earned ' + str(gold) +  ' golds from the farm! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
 
-        if request.POST['farming'] == 'house':
-            gold = random.randint(2, 5)
-            request.session['activities'].append('Earned ' + str(gold) +  ' golds from the house! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
+    elif place == 'cave':
+        gold = random.randint(5, 10)
+        request.session['activities'].append('Earned ' + str(gold) +  ' golds from the cave! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
 
-        if request.POST['farming'] == 'casino':
-            gold = random.randint(-50, 50)
-            if gold >= 0:
-                request.session['activities'].append('Entered a casino and Earned ' + str(gold) + ' golds... Oh hell yeah!!! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
-            else:
-                request.session['activities'].append('Entered a casino and Lost ' + str(gold) +  ' golds... Ouch! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
+    elif place == 'house':
+        gold = random.randint(2, 5)
+        request.session['activities'].append('Earned ' + str(gold) +  ' golds from the house! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
 
-        request.session['total_gold'] += gold        
+    elif place == 'casino':
+        gold = random.randint(-50, 50)
+        if gold >= 0:
+            request.session['activities'].append('Entered a casino and Earned ' + str(gold) + ' golds... Oh hell yeah!!! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
+        else:
+            request.session['activities'].append('Entered a casino and Lost ' + str(gold) +  ' golds... Ouch! ' + '(' + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ')')
 
-        if request.session['total_gold'] >= 50:
-            return render(request,'core/win.html')
+    request.session['total_gold'] += gold        
 
-        if request.session['total_gold'] <= -50:
-            return render(request,'core/lost.html')
+    if request.session['total_gold'] >= 50:
+        return render(request,'core/win.html')
 
-    return render(request, 'core/index.html')
+    if request.session['total_gold'] <= -50:
+        return render(request,'core/lost.html')
+
+    return redirect('/')
 
 def play_again(request):
     request.session.flush()
     return redirect('/')
-
